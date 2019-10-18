@@ -50,8 +50,13 @@ class CategoriaController extends Controller
        // $users  = Categoria::orderBy('id', 'count');
         $categorias = DB::table('categorias')->count();
         $articulos = DB::table('articulos')->count();
+        //$suma = Categoria::select("condicion")->get();
+        $suma = Categoria::sum("condicion");
         
-        return ['categorias'=> $categorias,'articulos'=>$articulos];
+
+        return ['categorias'=> $categorias,
+                'articulos'=>$articulos,
+                'suma'=> $suma];
     
     }  
 
